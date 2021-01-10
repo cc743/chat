@@ -52,16 +52,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="412" y="118" width="1200" height="800" key="AVDManager" timestamp="1610235584267">
+    <state x="412" y="118" width="1200" height="800" key="AVDManager" timestamp="1610246291802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="412" y="118" width="1200" height="800" key="AVDManager/0.0.1920.1040/0.-1080.1920.1080@0.0.1920.1040" timestamp="1610235584267" />
-    <state x="460" y="150" key="SettingsEditor" timestamp="1610235582009">
+    <state x="412" y="118" width="1200" height="800" key="AVDManager/0.0.1920.1040/0.-1080.1920.1080@0.0.1920.1040" timestamp="1610246291802" />
+    <state x="460" y="150" key="SettingsEditor" timestamp="1610235752426">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="460" y="150" key="SettingsEditor/0.0.1920.1040/0.-1080.1920.1080@0.0.1920.1040" timestamp="1610235582009" />
+    <state x="460" y="150" key="SettingsEditor/0.0.1920.1040/0.-1080.1920.1080@0.0.1920.1040" timestamp="1610235752426" />
     <state x="571" y="82" width="672" height="678" key="search.everywhere.popup" timestamp="1610234906755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

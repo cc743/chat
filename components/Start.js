@@ -3,7 +3,6 @@ import {View, Text, Button, TextInput, StyleSheet, ImageBackground, TouchableOpa
 
 //import the background image for the start screen
 const image = require('../assets/Background_Image.png');
-//onst colors = ['#0048BA', '#C46210', '#3B7A57', '#7FFFD4'];
 
 export default class Start extends React.Component {
   constructor(props) {
@@ -15,12 +14,13 @@ export default class Start extends React.Component {
   }
 
   render() {
-    //const {name, colors, colorChoice} = this.state;
     return (
-      <ImageBackground source={image} style={styles.image}>
+      <ImageBackground source={image} style={styles.image}>  
         <View style={{flex: 1, justifyContent: 'center'}}>
           <Text style={styles.title}>Chat App</Text>
+          {/*View Container for user to input name, select color, and go to chat screen*/}
           <View style={styles.startContainer}>
+            {/*create text input for user to enter name*/}
             <TextInput 
               style={styles.nameInput}
               onChangeText={(name) => this.setState({name})}
@@ -57,6 +57,7 @@ export default class Start extends React.Component {
                 }}
               />
             </View>
+            {/*Note: Using Touchable Opacity instead of Button as it is better for styling*/}
             <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Chat', {name: this.state.name, color: this.state.color})}>
               <Text style={styles.buttonText}>Go To  Chat</Text>
             </TouchableOpacity>
@@ -67,6 +68,7 @@ export default class Start extends React.Component {
   }
 }
 
+//Style sheets for react native components above
 const styles = StyleSheet.create({
   colorContainer: {
     flex: 1,
