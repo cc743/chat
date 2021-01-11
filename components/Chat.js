@@ -1,16 +1,58 @@
 import React from 'react';
-import {View, Text, TextInput, Button, Alert, TouchableOpacity, StyleSheet} from 'react-native';
+import {GiftedChat, Bubble} from 'react-native-gifted-chat';
+import {StyleSheet, View, Platform, KeyboardAvoidingView} from 'react-native';
 
 export default class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      messages: [],
     };
   }
 
-  alertMyText (input = []) {
-    Alert.alert(input.text);
+  componentDidMount() {
+    //setting the states with two static messages in order to see UI elements immediately
+    this.setState({
+      messages: [
+        {
+          _id: 2,
+          text: "What's up developer?",
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/140/140/any',
+          },
+        },
+        {
+          _id: 1,
+          text: `Hello ${this.props.route.params.name}`,          //Note use of backticks
+          createdAt: new Date(),
+          system: true,             //this message is a system message
+        },
+      ],
+    })
+  }
+
+  //custome function onSend: message sent by user gets appended to the state **messages** (line 9)
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }))
+  }
+
+  //The renderBubble function changes the color of the chat's speech bubble to black (line 68)
+  renderBubble(props) {
+    return (
+      <Bubble 
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: '#000'
+          }
+        }}
+      />
+    )
   }
 
   render() {
@@ -20,40 +62,25 @@ export default class Chat extends React.Component {
     this.props.navigation.setOptions({title: name});  //set the app's header text from 'name' (line 17) 
 
     return (
-      <View style={{flex: 1, justifyContent: 'center', backgroundColor: color}}>  
-      {/*Note: background color is set to 'color' (line 18)*/}
-        <TextInput 
-          style={{height: 40, borderColor: 'gray', borderWidth: 1, width: '88%', alignSelf: 'center'}}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-          placeholder='Start Typing Here'
+      <View style={[styles.view , {backgroundColor: color}]}> 
+        {/* Code for rendering messages...questiion: what does bind(this) do?*/}
+        <GiftedChat
+          renderBubble={this.renderBubble.bind(this)}
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          user={{
+            _id: 1,
+          }}
         />
-        <Text style={{marginLeft: '6%'}}>You wrote: {this.state.text}</Text>
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={() => {
-            this.alertMyText({text: this.state.text});
-          }}  
-        >
-          <Text style={styles.buttonText}>Send</Text>
-        </TouchableOpacity>
+        {/* Using KeyboardAvoidingView to resolve Android-specific keyboard issue */}
+        {Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null}
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#0062ff',
-    width: '25%',
-    height: '5%',
-    marginTop: 20,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonText: {
-    color: 'white'
+  view: {
+    flex: 1
   },
 });
