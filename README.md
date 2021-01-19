@@ -1,12 +1,9 @@
 # chat
---
 This chat app is a React Native application built using Expo's gifted-chat and Google Firebase to create a chat app that runs in real-time, for Android and iOS.
 
 ## Getting Started
---
 
 ## Installing Expo
---
 Before the app can run, the Expo CLI must be installed via the terminal with the following command:
 
 `npm install expo-cli --global`
@@ -48,4 +45,3 @@ Click the "Download" link next to whichever OS you choose, and Android Studio wi
 Finally, return to the Virtual Device Manager and click on the "Play" icon to start the emulator. Then, navigate to the "Browser" tab of the project you are currently running in Expo and click "Run on Android device/emulator". Expo will begin installing the Expo client on the virtual device and then start the project.
 
 ## Firebase Setup
---
