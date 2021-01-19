@@ -38,7 +38,11 @@ export default class Chat extends React.Component {
     }
     //creates reference to Firestone 'messages' collection which stores and retrieves messages the users send
     this.referenceChatMessages = firebase.firestore().collection('messages'); 
-    LogBox.ignoreLogs(["Cannot update a component from inside the function body of a different component."]);
+    LogBox.ignoreLogs([
+      "Cannot update a component from inside the function body of a different component.",
+      "Animated.event now requires a second argument for options",
+      "Setting a timer"
+    ]);
   }
 
   //This function is invoked when the 'messages' collection changes.  
