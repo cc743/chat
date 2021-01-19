@@ -1,8 +1,10 @@
 import React from 'react';
 import {GiftedChat, Bubble, InputToolbar} from 'react-native-gifted-chat';
-import {StyleSheet, View, Platform, KeyboardAvoidingView} from 'react-native';
+import {StyleSheet, View, Platform, KeyboardAvoidingView, LogBox} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import NetInfo from '@react-native-community/netinfo';
+import CustomActions from './CustomActions';
+import MapView from 'react-native-maps'; 
 
 const firebase = require('firebase');
 require('firebase/firestore');
@@ -18,6 +20,7 @@ export default class Chat extends React.Component {
         avatar: ''
       },
       isConnected: false,
+      image: null,
     };
 
     const firebaseConfig = {
@@ -35,6 +38,7 @@ export default class Chat extends React.Component {
     }
     //creates reference to Firestone 'messages' collection which stores and retrieves messages the users send
     this.referenceChatMessages = firebase.firestore().collection('messages'); 
+    LogBox.ignoreLogs(["Cannot update a component from inside the function body of a different component."]);
   }
 
   //This function is invoked when the 'messages' collection changes.  
@@ -47,9 +51,11 @@ export default class Chat extends React.Component {
       let data = doc.data();
       messages.push({
         _id: data._id,
-        text: data.text,
+        text: data.text || null,
         createdAt: data.createdAt.toDate(),
         user: data.user,
+        image: data.image || null,
+        location: data.location || null,
       });
     });
     this.setState({
@@ -64,9 +70,12 @@ export default class Chat extends React.Component {
     this.referenceChatMessages.add({
       _id: message._id,
       createdAt: message.createdAt, 
-      text: message.text,
-      user: message.user
-    });
+      text: message.text || null,
+      user: message.user,
+      image: message.image || null,
+      location: message.location || null, 
+    }); 
+    //console.log(message);
   }
 
   //custom function onSend: message sent by user gets appended to the state **messages**
@@ -75,8 +84,9 @@ export default class Chat extends React.Component {
       messages: GiftedChat.append(previousState.messages, messages),
     }),
     () => {
-      this.addMessage();  //wouldn't I need addMessage() as well...as it was part of the previous exercise?
+      this.addMessage(); 
       this.saveMessages();
+      console.log(messages);
     });
   }
   
@@ -101,6 +111,28 @@ export default class Chat extends React.Component {
         <InputToolbar {...props}/>
       );
     }
+  }
+
+  renderCustomActions = (props) => {
+    return <CustomActions {...props} />;
+  };
+
+  renderCustomView (props) {
+    const {currentMessage} = props;
+    if (currentMessage.location) {
+      return (
+        <MapView 
+          style={{width: 150, height: 100, borderRadius: 13, margin: 3}}
+          region={{
+            latitude: currentMessage.location.latitude,
+            longitude: currentMessage.location.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      );
+    }
+    return null;
   }
 
   //getMessages function loads the messages from asyncStorage
@@ -192,6 +224,8 @@ export default class Chat extends React.Component {
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
           renderInputToolbar={this.renderInputToolbar.bind(this)}
+          renderActions={this.renderCustomActions}
+          renderCustomView={this.renderCustomView}
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}
           user={this.state.user}

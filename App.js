@@ -1,6 +1,7 @@
 //import the screens
 import Start from './components/Start';
 import Chat from './components/Chat';
+//import CustomActions from './CustomActions';
 
 //import react native gesture handler
 import 'react-native-gesture-handler';
