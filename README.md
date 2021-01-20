@@ -38,11 +38,15 @@ _Once again, make sure to insert your information into the path._
 
 #### Installing and Running Android Emulator
 
-At this point, the user will close out of the "Settings for New Projects" window and click "Configure" again.  This time, the user will select the "AVD Manager" option instead.  From there, click "Create Virtual Device" and select a device from the list.  Click "Next" to navigate to the "System Image" interface and click on the "Recommended" tab.  Finally, select an operating system.
+At this point, the user will close out of the "Settings for New Projects" window and click "Configure" again.  This time, the user will select the "AVD Manager" option instead.  From there, click "Create Virtual Device" and select a device from the list.  Click "Next" to navigate to the "System Image" interface and click on the "Recommended" tab.  Finally, select an operating system.  _For those running Windows, it is advisable to select a device with the Play Store included -- see special notice below_
 
 Click the "Download" link next to whichever OS you choose, and Android Studio will download the image. _This may take a few minutes._ Once finished, in the next window, give your device a name and click "Finish".
 
-Finally, return to the Virtual Device Manager and click on the "Play" icon to start the emulator. Then, navigate to the "Browser" tab of the project you are currently running in Expo and click "Run on Android device/emulator". Expo will begin installing the Expo client on the virtual device and then start the project.
+Finally, return to the Virtual Device Manager and click on the "Play" icon to start the emulator. Then, navigate to the "Browser" tab of the project you are currently running in Expo and click "Run on Android device/emulator". Expo will begin installing the Expo client on the virtual device and then start the project. 
+
+**Special Notice:**  
+
+![Note For Windows: Android Emulator](/assets/noteForWindows.PNG) 
 
 ## Firebase Setup
 
