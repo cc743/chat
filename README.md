@@ -45,3 +45,45 @@ Click the "Download" link next to whichever OS you choose, and Android Studio wi
 Finally, return to the Virtual Device Manager and click on the "Play" icon to start the emulator. Then, navigate to the "Browser" tab of the project you are currently running in Expo and click "Run on Android device/emulator". Expo will begin installing the Expo client on the virtual device and then start the project.
 
 ## Firebase Setup
+
+First, navigate to Google Firebase and click "Sign In" in the top-right corner.  The user should use their existing Google credentials to sign in and create a new Firebase account.  _If you do not have a Google account, create one and then proceed._
+
+After that, click on the "Go to Console" link in the top-right corner and click "Create Project".  _If you have created any Firebase projects in the past, it will say "Add Project"._ The user will then fill out a form with some basic information about themselves.  Go ahead and user the default settings on the last step. 
+
+### Firebase Database Setup
+
+Onnce the project is created, click on the "Database" option in the left panel.  From there, click on "Create Database" and select the "Start in Test Mode" option. This option allows users to read from and write to the user's database. Select a database location that is closest to your geographical location.  
+
+### Firebase Cloud Storage Setuo
+
+The user will need to set up Firebase Cloud Storage to store any images they send and receive.  To do so, click the "Storage" option on the left panel, click "Get Started", "Next", and then "Done".
+
+### Firebase Authentication Setup
+
+Users will need to be authenticated if they want to utilize the application's ability to send and store messages.  To set this up, return to the dashboard and click the "Authentication" option on the left hand panel.  Then click "Setup Sign-In Method" and enable the "Anonymous" option, which should be the final item on the list.
+
+### Generating an API Key
+
+To give the application access to the user's Firebase project, they must generate an API key.  To do so, go to "Project Settings" at the top of the left panel and click "Create Web App" under the "General" tab.  _This option may appear as </>_.  In the modal that appears, name your applications and click "Register App".  
+
+Once registered, you will get a code snippet that looks something like this: 
+
+**_Insert Image Here_**
+
+Copy everything within the curly braces of the firebaseConfig variable.  Once the user has cloned or downloaded this repository, they will navigate to components/Chat.js, go to the following section of code:
+
+```javascript
+const firebaseConfig = {
+      apiKey: "AIzaSyD6qy9DhjCJebzsnyrXWsPxjxvsqeTV8dY",
+      authDomain: "test-1af5f.firebaseapp.com",
+      projectId: "test-1af5f",
+      storageBucket: "test-1af5f.appspot.com",
+      messagingSenderId: "539093304807",
+      appId: "1:539093304807:web:ff05914c4ec39f180ea942",
+      measurementId: "G-HR5FEM62H2"
+    }
+```
+
+...delete the content within the curly braces, and paste their unique API key information instead.
+
+## Final Steps
