@@ -12,15 +12,15 @@ The Expo app will also need to be downloaded on the user's mobile device to allo
 
 ### Expo Setup
 
-The user must create an Expo account.  This can be done by navigating to the Expo sign-up page and following the steps outlined to create an account.  Once finished, the user should be able to log in to Expo on their mobile device and in their browser.  These credentials will also be used to log in to the Expo CLI during setup.
+The user must create an Expo account.  This can be done by navigating to the [Expo sign-up page](https://expo.io/) and following the steps outlined to create an account.  Once finished, the user should be able to log in to Expo on their mobile device and in their browser.  These credentials will also be used to log in to the Expo CLI during setup.
 
 ### iOS Simulator Setup
 
-_User will need a product that runs on iOS in order to run this app in an iOS simulator._ On a device running iOS, such as a MacBook, the user must install Xcode.  Once installed, the user will open it and navigate to "Preferences".  Under "Preferences", the user will click on "Components" and install their choice of simulator from the list.  Once installed, the user will open the simulator, start their Expo project, and run the project.  Projects can be run either by typing "i" in the Expo CLI or clicking "Run on iOS simmulator" in Xcode.  Personally, I do not own a MacBook so I did not undertake these steps.
+_User will need a product that runs on iOS in order to run this app in an iOS simulator._ On a device running iOS, such as a MacBook, the user must install [Xcode](https://developer.apple.com/xcode/resources/).  Once installed, the user will open it and navigate to "Preferences".  Under "Preferences", the user will click on "Components" and install their choice of simulator from the list.  Once installed, the user will open the simulator, start their Expo project, and run the project.  Projects can be run either by typing "i" in the Expo CLI or clicking "Run on iOS simmulator" in Xcode.  Personally, I do not own a MacBook so I did not undertake these steps.
 
 ### Android Emulator Setup
 
-To set up an emulator for Android, users must download and install Android Studio.  The user will be guided through an installation process once the download completes.  **Do not uncheck the option for "Android Virtual Device"** when it shows up during installation.  
+To set up an emulator for Android, users must download and install [Android Studio](https://docs.expo.io/workflow/android-studio-emulator/?redirected).  The user will be guided through an installation process once the download completes.  **Do not uncheck the option for "Android Virtual Device"** when it shows up during installation.  
 
 Once installed, the user should open Android Studio and click the "Configure" option.  From there, navigate to Settings --> Appearance and Behavior --> System Setitngs --> Android SDK. Then click on "SDK Tools" and check whether or not "Android SDK Build Tools" are installed.  If not, click on the row labelled "Android SDK Build Tools" and download the latest version using the download symbol next to it.  
 
@@ -46,7 +46,7 @@ Finally, return to the Virtual Device Manager and click on the "Play" icon to st
 
 ## Firebase Setup
 
-First, navigate to Google Firebase and click "Sign In" in the top-right corner.  The user should use their existing Google credentials to sign in and create a new Firebase account.  _If you do not have a Google account, create one and then proceed._
+First, navigate to [Google Firebase](https://firebase.google.com/) and click "Sign In" in the top-right corner.  The user should use their existing Google credentials to sign in and create a new Firebase account.  _If you do not have a Google account, create one and then proceed._
 
 After that, click on the "Go to Console" link in the top-right corner and click "Create Project".  _If you have created any Firebase projects in the past, it will say "Add Project"._ The user will then fill out a form with some basic information about themselves.  Go ahead and user the default settings on the last step. 
 
@@ -84,7 +84,7 @@ const firebaseConfig = {
     }
 ```
 
-...delete the content within the curly braces, and paste their unique API key information instead.
+...delete the content within the curly braces, and paste their own unique API key information instead.
 
 ## Final Steps
 
