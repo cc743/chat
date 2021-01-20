@@ -68,7 +68,7 @@ To give the application access to the user's Firebase project, they must generat
 
 Once registered, you will get a code snippet that looks something like this: 
 
-**_Insert Image Here_**
+![Firebase Snip](/assets/firebaseSnip.PNG) 
 
 Copy everything within the curly braces of the firebaseConfig variable.  Once the user has cloned or downloaded this repository, they will navigate to components/Chat.js, go to the following section of code:
 
@@ -87,3 +87,17 @@ const firebaseConfig = {
 ...delete the content within the curly braces, and paste their unique API key information instead.
 
 ## Final Steps
+
+Now that all configuration is complete, the user is able to run the application.  Navigate to the project directory in the terminal and type (depending on what package manager the user has chosen):
+
+`expo start` or `npm start` or `yarn start`
+
+From there, the user can type "i" in the terminal to run the app in the iOS simulator (if the user is running on a Mac) or "a" to run in the Android emulator.  _Make sure the Android emulator is already running._
+
+You can also run the app on your personal mobile device:
+
+**Android:** Open the Expo app on your Android device, navigate to the user icon in the bottom right, and sign in if you haven't already.  Then, navigate back to the Projects tab, and scan the QR code that was generated in the terminal and the Metro Bundler in the browser.
+
+**iPhone:**  Keep open the camera app and focus it on the QR code that was generated in the terminal and the Metro Bundler in the browser.
+
+The app will open, the user will enter their name, choose a background color for the chat screen, and begin chatting.
